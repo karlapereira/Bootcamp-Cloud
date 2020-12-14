@@ -1,0 +1,15 @@
+version: 0.0
+os: linux
+files:
+  - source: aplicacao/
+    destination: /var/www/html/
+    owner: apache
+hooks:
+    BeforeInstall:
+    - location: scripts/start.sh
+      timeout: 30
+      runas: root
+    AfterInstall:
+    - location: scripts/permissao.sh
+      timeout: 30
+      runas: root
